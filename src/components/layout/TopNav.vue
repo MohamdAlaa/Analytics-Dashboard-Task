@@ -4,7 +4,7 @@ const sections = ['Finance', 'Sales', 'HR', 'MGMT']
 
 <template>
   <header class="px-4 pt-4 pb-2 sm:px-6 lg:px-10">
-    <div class="flex items-center justify-between gap-4 max-w-6xl mx-auto">
+    <div class="flex items-center justify-between gap-4 max-w-6xl ">
       <div class="space-y-1">
         <p class="text-sm font-semibold text-slate-800">The Essentials.</p>
         <p class="text-xs text-slate-500">Here’s how your business is performing today.</p>

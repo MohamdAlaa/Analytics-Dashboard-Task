@@ -1,5 +1,6 @@
 <script setup>
 import TopNav from './TopNav.vue'
+import Navbar from './Navbar.vue'
 import SidebarNav from './SidebarNav.vue'
 import MainDashboard from '../dashboard/MainDashboard.vue'
 </script>
@@ -18,6 +19,7 @@ import MainDashboard from '../dashboard/MainDashboard.vue'
 
     <!-- Main content -->
     <div class="flex-1 flex flex-col min-h-screen bg-gray-300 rounded-3xl m-4">
+      <Navbar />
       <TopNav />
 
       <main class="flex-1 px-2 pb-6 pt-3 sm:px-4 lg:px-8 flex justify-center"> <MainDashboard />
