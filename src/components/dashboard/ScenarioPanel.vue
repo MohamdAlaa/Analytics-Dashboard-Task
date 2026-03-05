@@ -1,4 +1,6 @@
 <script setup>
+import { Slider } from 'primevue';
+
 defineProps({
   title: String,
   description: String,
@@ -11,36 +13,36 @@ defineProps({
 const rows = [
   { label: 'Gross Profit', current: '$640,000', adjusted: '$650,000', change: '+1.6%' },
   { label: 'Net Income', current: '$650,000', adjusted: '$670,000', change: '+3.0%' },
-  { label: 'Runway (months)', current: '4.1', adjusted: '6.5', change: '+2.4' }
+  { label: 'Runway (months)', current: '4.1', adjusted: '6.5', change: '+2.4' },
+  { label: 'Gross Margin', current: '52%', adjusted: '52%', change: '+2.4' }
 ]
 </script>
 
 <template>
   <section class="bg-surface shadow-card rounded-card p-5 sm:p-6 flex flex-col gap-4">
-    <header class="space-y-1">
-      <p class="text-sm font-semibold text-slate-900">{{ title }}</p>
-      <p class="text-xs text-slate-400">
+    <header class="space-y-1 ">
+      <p class=" font-extrabold text-slate-900">{{ title }}</p>
+      <p class=" text-slate-500 font-semibold">
         {{ description }}
       </p>
     </header>
 
-    <div class="space-y-4">
+    <div class="grid grid-cols-3 gap-10 ">
       <div
         v-for="slider in sliders"
         :key="slider"
-        class="flex items-center justify-between gap-3 text-xs"
+        class="flex items-center justify-between "
       >
-        <span class="text-slate-500">{{ slider }}</span>
-        <div class="flex-1 h-1.5 rounded-full bg-surface-muted mx-2 overflow-hidden">
-          <div class="h-full rounded-full bg-primary"></div>
-        </div>
-        <span class="text-slate-400">+{{ Math.floor(Math.random() * 10) }}%</span>
+      <div class="flex flex-col gap-4">
+        <span class="text-slate-900 font-medium">{{ slider }}</span>
+        <Slider v-model="value"  class="w-36 h-36 " />
+      </div>
       </div>
     </div>
 
-    <div class="bg-primary text-white rounded-2xl p-3 text-[11px] space-y-2">
-      <div class="grid grid-cols-4 gap-2 font-medium">
-        <span></span>
+    <div class="bg-primary text-white rounded-b-3xl p-3 text-[11px] space-y-2">
+      <div class="grid grid-cols-4 gap-2 font-medium text-base">
+        <span class="">Output Snapshot</span>
         <span>Current</span>
         <span>Adjusted</span>
         <span>Changes</span>
@@ -50,16 +52,16 @@ const rows = [
         :key="row.label"
         class="grid grid-cols-4 gap-2 items-center border-t border-white/15 pt-1.5 mt-1.5"
       >
-        <span>{{ row.label }}</span>
-        <span class="text-xs text-white/80">{{ row.current }}</span>
-        <span class="text-xs text-white/80">{{ row.adjusted }}</span>
-        <span class="text-xs font-semibold">{{ row.change }}</span>
+        <span class="text-base text-slate-900 font-medium">{{ row.label }}</span>
+        <span class=" text-base text-slate-900 font-medium">{{ row.current }}</span>
+        <span class=" text-base text-slate-900 font-medium">{{ row.adjusted }}</span>
+        <span class="text-base   font-medium">{{ row.change }}</span>
       </div>
     </div>
 
     <button
       type="button"
-      class="mt-1 inline-flex items-center justify-center rounded-full bg-primary text-white text-xs font-medium py-2 px-4 self-start shadow-card"
+      class="mt-1 inline-flex items-center justify-center rounded-full bg-primary text-white   font-medium py-2 px-4 self-start shadow-card"
     >
       Generate
     </button>

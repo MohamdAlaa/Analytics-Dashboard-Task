@@ -23,7 +23,7 @@ const chartOptions = computed(() => ({
   maintainAspectRatio: false,
   plugins: {
     legend: {
-      display: true,
+      display: false,
       position: 'bottom',
       labels: {
         boxWidth: 8,
@@ -61,8 +61,8 @@ const chartOptions = computed(() => ({
       </div>
     </header>
 
-    <div class="h-56 sm:h-64 lg:h-72">
-      <Chart :type="type" :data="data" :options="chartOptions" />
+    <div class="h-56 sm:h-64 lg:h-full">
+      <Chart :type="type" :data="data" :options="chartOptions" class="h-full" />
     </div>
   </section>
 </template>

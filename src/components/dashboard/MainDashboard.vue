@@ -5,6 +5,7 @@ import ChartCard from './ChartCard.vue'
 import ScenarioPanel from './ScenarioPanel.vue'
 import MiniLineCard from './MiniLineCard.vue'
 import GoalCompletionCard from './GoalCompletionCard.vue'
+import { Slider } from 'primevue'
 
 const kpis = [
   {
@@ -122,9 +123,10 @@ const netFlowData = computed(() => ({
 }))
 
 const scenarioRows = [
-  { label: 'Cash in Bank', current: '$1,700,000', adjusted: '$1,950,000', change: '+14.7%' },
-  { label: 'Net Flow', current: '$650,000', adjusted: '$710,000', change: '+9.2%' },
-  { label: 'Cash Runway', current: '4.1', adjusted: '6.5', change: '+2.4' }
+  { label: 'Inflow', current: '$1,700,000', adjusted: '$1,950,000', change: '+14.7%' },
+  { label: 'Outflow', current: '$650,000', adjusted: '$710,000', change: '+9.2%' },
+  { label: 'Net Cash Flow', current: '4.1', adjusted: '6.5', change: '+2.4' }, 
+  { label: 'Cash Balance', current: '58%', adjusted: '58%', change: '+2.4' }
 ]
 
 const profitLossData = computed(() => ({
@@ -184,7 +186,7 @@ const profitLossData = computed(() => ({
         <ScenarioPanel
           title="Forecast & Budget Tuner"
           description="Adjust revenue, OPEX, and COGS assumptions to see profit scenarios live."
-          :sliders="['Revenue Growth', 'COGS % of Revenue', 'CapEx Change']"
+          :sliders="['Revenue Growth', 'COGS % of Revenue', 'CapEx Change', 'Seasonality', 'Pipeline Confidence']"
         />
       </div>
     </div>
@@ -202,24 +204,31 @@ const profitLossData = computed(() => ({
 
       <section class="bg-surface shadow-card rounded-card p-5 sm:p-6 space-y-4">
         <header class="space-y-1">
-          <p class="text-sm font-semibold text-slate-900">Cash Flow Scenario Tuner</p>
-          <p class="text-xs text-slate-400">
+          <p class=" font-extrabold text-slate-900">Cash Flow Scenario Tuner</p>
+          <p class=" font-semibold text-slate-500">
             Adjust inflow, outflow, and operational levers to see instant impact on runway and cash
             position.
           </p>
         </header>
 
-        <div class="flex flex-wrap gap-2 text-[11px]">
-          <span class="px-3 py-1 rounded-full bg-primary-soft text-primary font-medium">
-            Inflow Sensitivity
-          </span>
-          <span class="px-3 py-1 rounded-full bg-surface-muted text-slate-500">Opex Tightening</span>
-          <span class="px-3 py-1 rounded-full bg-surface-muted text-slate-500">Payment Terms</span>
+        <div class="flex justify-between text-base font-medium">
+          <div class="flex flex-col gap-5">
+            <span>Inflow Sensitivity</span>
+            <Slider v-model="value"  class="w-36 " />
+          </div>
+          <div class="flex flex-col gap-5">
+            <span>OpEx Tightening</span>
+            <Slider v-model="value"  class="w-36 " />
+          </div>
+          <div class="flex flex-col gap-5">
+            <span>Payment Terms</span>
+            <Slider v-model="value"  class="w-36 " />
+          </div>
         </div>
 
-        <div class="bg-primary text-white rounded-2xl p-3 text-[11px] space-y-2">
-          <div class="grid grid-cols-4 gap-2 font-medium">
-            <span></span>
+        <div class="bg-primary text-white rounded-b-3xl p-3 text-[11px] space-y-2">
+          <div class="grid grid-cols-4 gap-2 font-medium text-base">
+            <span>Output Snapshot</span>
             <span>Current</span>
             <span>Adjusted</span>
             <span>Changes</span>
@@ -229,10 +238,10 @@ const profitLossData = computed(() => ({
             :key="row.label"
             class="grid grid-cols-4 gap-2 items-center border-t border-white/15 pt-1.5 mt-1.5"
           >
-            <span>{{ row.label }}</span>
-            <span class="text-xs text-white/80">{{ row.current }}</span>
-            <span class="text-xs text-white/80">{{ row.adjusted }}</span>
-            <span class="text-xs font-semibold">{{ row.change }}</span>
+            <span class="text-base text-slate-900 font-medium">{{ row.label }}</span>
+            <span class=" text-base text-slate-900 font-medium">{{ row.current }}</span>
+            <span class="text-base text-slate-900 font-medium">{{ row.adjusted }}</span>
+            <span class="text-base  font-medium">{{ row.change }}</span>
           </div>
         </div>
 

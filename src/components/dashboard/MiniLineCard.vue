@@ -44,7 +44,7 @@ const options = computed(() => ({
       <p class="text-[11px] text-emerald-500 font-medium">{{ label }}</p>
     </header>
 
-    <div class="h-24">
+    <div class="h-56">
       <Chart type="line" :data="data" :options="options" />
     </div>
   </section>
