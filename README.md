@@ -30,13 +30,6 @@ npm run dev
 
 Then open the printed local URL in your browser (usually `http://localhost:5173`).
 
-### Production build
-
-```bash
-npm run build
-npm run preview
-```
-
 ## Project structure
 
 - `src/main.js` – Vue app bootstrap, Tailwind and PrimeVue setup.
@@ -44,11 +37,3 @@ npm run preview
 - `src/components/layout/*` – Reusable layout components (top navigation, sidebar, layout shell).
 - `src/components/dashboard/*` – KPI cards, chart cards, main dashboard, and scenario panels.
 - `src/assets/main.css` – Tailwind entrypoint and global styles.
-
-Mock data is used for KPIs, charts, and analytics tables to match the look and feel of the provided design.
-
-# Vue 3 + Vite
-
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
-
-Learn more about IDE Support for Vue in the [Vue Docs Scaling up Guide](https://vuejs.org/guide/scaling-up/tooling.html#ide-support).
